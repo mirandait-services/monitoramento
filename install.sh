@@ -12,5 +12,8 @@ docker-compose --version
 #
 
 #Docker-compose
-docker-compose -f docker-compose/graylog/docker-compose.yml -f docker-compose/zabbix/docker-compose.yml up
+docker-compose docker-compose/graylog/docker-compose.yml create
+docker-compose docker-compose/zabbix/docker-compose.yml create
+docker-compose docker-compose/graylog/docker-compose.yml start
+docker-compose docker-compose/zabbix/docker-compose.yml start
 #
