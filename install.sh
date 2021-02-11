@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Download dos scripts
+git clone https://github.com/mirandait-services/monitoramento
+cd monitoramento
+
 #Instalação do Docker
 apt update -y
 apt install apt-transport-https ca-certificates curl software-properties-common -y
@@ -12,3 +16,6 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 #
 
+#Docker-compose
+docker-compose -f docker-compose/zabbix/docker-compose.yml -f docker-compose/graylog/docker-compose.yml up
+#
