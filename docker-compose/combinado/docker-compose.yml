@@ -59,7 +59,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - mysql_data:/zabbix/mysql:/var/lib/data
+      - './zabbix/mysql:/var/lib/data'
     environment:
       - MYSQL_ROOT_PASSWORD=binariocloud
       - MYSQL_DATABASE=zabbix
@@ -75,7 +75,7 @@ services:
     ports:
       - '10051:10051'
     volumes:
-      - zabbix-server_data:/zabbix/alertscripts:/usr/lib/zabbix/alertscripts
+      - './zabbix/alertscripts:/usr/lib/zabbix/alertscripts'
     environment:
       - DB_SERVER_HOST=mysql
       - MYSQL_DATABASE=zabbix
@@ -125,7 +125,7 @@ services:
     restart: always
     privileged: true
     volumes:
-      - zabbix-agent_data:/var/run:/var/run
+      - /var/run:/var/run
     ports:
       - '10050:10050'
     environment:
@@ -140,9 +140,4 @@ volumes:
     driver: local
   graylog_data:
     driver: local
-  mysql_data:
-    driver: local
-  zabbix-server_data:
-    driver: local
-  zabbix-agent_data:
-    driver: local     
+    
