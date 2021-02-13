@@ -24,8 +24,6 @@ services:
     mem_limit: 1g
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    env_file:
-    - .env
     container_name: graylog
     image: graylog/graylog:4.0
     volumes:
@@ -36,7 +34,7 @@ services:
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
       # Password: admin
       - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG_HTTP_EXTERNAL_URI=${IP4}
+      - GRAYLOG_HTTP_EXTERNAL_URI=${IP_SERVER}
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     links:
       - mongodb:mongo
